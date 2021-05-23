@@ -278,7 +278,7 @@ namespace PlayerList.Entries
         {
             if (entry.player.prop_VRCPlayer_0 is null || entry.player.prop_VRCPlayer_0.prop_PhotonView_0 is null) return;
             if (entry.isFriend) tempString.Append("<color=#FFFF00>");
-            tempString.Append("#"+entry.player.prop_VRCPlayer_0.prop_PhotonView_0.field_Private_Int32_0.ToString().PadRight(highestPhotonIdLength));
+            tempString.Append("#"+playerNet.prop_VRCPlayer_0.prop_PhotonView_0.field_Private_Int32_0.ToString().PadRight(highestPhotonIdLength));
             if (entry.isFriend) tempString.Append("</color>");
             tempString.Append(separator);
         }
