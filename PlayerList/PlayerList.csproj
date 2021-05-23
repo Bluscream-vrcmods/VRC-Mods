@@ -73,7 +73,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="move &quot;bin\Release\net472\PlayerList.dll&quot; &quot;S:\Steam\steamapps\common\VRChat\Mods&quot;" />
+		<Exec Command="move &quot;$(TargetPath)&quot; &quot;S:\Steam\steamapps\common\VRChat\Mods\$(TargetFileName)&quot;" />
 	</Target>
 
 </Project>

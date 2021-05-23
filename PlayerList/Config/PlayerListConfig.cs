@@ -31,6 +31,7 @@ namespace PlayerList.Config
         public static EntryWrapper<bool> distanceToggle;
         public static EntryWrapper<bool> photonIdToggle;
         public static EntryWrapper<bool> displayNameToggle;
+        public static EntryWrapper<bool> friendStatusToggle;
         private static EntryWrapper<string> displayNameColorMode;
 
         public static PlayerEntry.DisplayNameColorMode DisplayNameColorMode
@@ -100,6 +101,8 @@ namespace PlayerList.Config
             distanceToggle = CreateEntry(categoryIdentifier, nameof(distanceToggle), true, is_hidden: true);
             photonIdToggle = CreateEntry(categoryIdentifier, nameof(photonIdToggle), false, is_hidden: true);
             displayNameToggle = CreateEntry(categoryIdentifier, nameof(displayNameToggle), true, is_hidden: true);
+            friendStatusToggle = CreateEntry(categoryIdentifier, nameof(friendStatusToggle), true, is_hidden: true);
+            
             displayNameColorMode = CreateEntry(categoryIdentifier, nameof(displayNameColorMode), "TrustAndFriends", is_hidden: true);
 
             reverseBaseSort = CreateEntry(categoryIdentifier, nameof(reverseBaseSort), false, is_hidden: true);

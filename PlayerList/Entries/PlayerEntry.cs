@@ -53,6 +53,13 @@ namespace PlayerList.Entries
         public int fps;
         public float distance;
         public bool isFriend;
+        /*{
+            get { return _isFriend; }
+            set { _isFriend = value;
+                separator = (value) ? "<color=#FFFF00>|</color>" : "|";
+            }
+        }*/
+        private bool _isFriend;
         public string playerColor;
         public bool isFrozen;
 
@@ -102,6 +109,8 @@ namespace PlayerList.Entries
         public static void OnStaticConfigChanged()
         {
             updateDelegate = null;
+            if (PlayerListConfig.photonIdToggle.Value)
+                updateDelegate += AddPhotonId;
             if (PlayerListConfig.pingToggle.Value)
                 updateDelegate += AddPing;
             if (PlayerListConfig.fpsToggle.Value)
@@ -112,13 +121,12 @@ namespace PlayerList.Entries
                 updateDelegate += AddPerf;
             if (PlayerListConfig.distanceToggle.Value)
                 updateDelegate += AddDistance;
-            if (PlayerListConfig.photonIdToggle.Value)
-                updateDelegate += AddPhotonId;
             if (PlayerListConfig.displayNameToggle.Value)
                 updateDelegate += AddDisplayName;
+            if (PlayerListConfig.friendStatusToggle.Value)
+            // updateDelegate += AddFriendStatus;
             if (PlayerListConfig.distanceToggle.Value && EntrySortManager.IsSortTypeInUse(EntrySortManager.SortType.Distance) || PlayerListConfig.pingToggle.Value && EntrySortManager.IsSortTypeInUse(EntrySortManager.SortType.Ping))
                 updateDelegate += (PlayerNet playerNet, PlayerEntry entry, ref StringBuilder tempString) => EntrySortManager.SortPlayer(entry);
-
             if (PlayerListConfig.condensedText.Value)
                 separator = "|";
             else
@@ -268,11 +276,21 @@ namespace PlayerList.Entries
         }
         private static void AddPhotonId(PlayerNet playerNet, PlayerEntry entry, ref StringBuilder tempString)
         {
-            tempString.Append(entry.player.prop_VRCPlayer_0.prop_PhotonView_0.field_Private_Int32_0.ToString().PadRight(highestPhotonIdLength) + separator);
+            if (entry.player.prop_VRCPlayer_0 is null || entry.player.prop_VRCPlayer_0.prop_PhotonView_0 is null) return;
+            if (entry.isFriend) tempString.Append("<color=#FFFF00>");
+            tempString.Append("#"+entry.player.prop_VRCPlayer_0.prop_PhotonView_0.field_Private_Int32_0.ToString().PadRight(highestPhotonIdLength));
+            if (entry.isFriend) tempString.Append("</color>");
+            tempString.Append(separator);
         }
         private static void AddDisplayName(PlayerNet playerNet, PlayerEntry entry, ref StringBuilder tempString)
         {
-            tempString.Append("<color=" + entry.playerColor + ">" + entry.apiUser.displayName + "</color>" + separator);
+            tempString.Append("<color=" + entry.playerColor + ">" + entry.apiUser.displayName + "</color>");
+            // if (entry.isFriend) tempString.Append(" (<color=#FFFF00>Friend</color>)");
+            tempString.Append(separator);
+        }
+        private static void AddFriendStatus(PlayerNet playerNet, PlayerEntry entry, ref StringBuilder tempString)
+        {
+            tempString.Append((entry.isFriend ? "<color=#FFFF00>Friend</color>" : string.Empty) + separator);
         }
 
         private static void OnFriended(APIUser user)
