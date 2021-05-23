@@ -284,13 +284,7 @@ namespace PlayerList.Entries
         }
         private static void AddDisplayName(PlayerNet playerNet, PlayerEntry entry, ref StringBuilder tempString)
         {
-            tempString.Append("<color=" + entry.playerColor + ">" + entry.apiUser.displayName + "</color>");
-            // if (entry.isFriend) tempString.Append(" (<color=#FFFF00>Friend</color>)");
-            tempString.Append(separator);
-        }
-        private static void AddFriendStatus(PlayerNet playerNet, PlayerEntry entry, ref StringBuilder tempString)
-        {
-            tempString.Append((entry.isFriend ? "<color=#FFFF00>Friend</color>" : string.Empty) + separator);
+            tempString.Append("<color=" + entry.playerColor + ">" + entry.apiUser.displayName + "</color>" + separator);
         }
 
         private static void OnFriended(APIUser user)
