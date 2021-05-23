@@ -1,0 +1,47 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Shadow\\source\\repos\\VRC-Mods\\AvatarHider\\AvatarHider.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Shadow\\source\\repos\\VRC-Mods\\AvatarHider\\AvatarHider.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Shadow\\source\\repos\\VRC-Mods\\AvatarHider\\AvatarHider.csproj",
+        "projectName": "AvatarHider",
+        "projectPath": "C:\\Users\\Shadow\\source\\repos\\VRC-Mods\\AvatarHider\\AvatarHider.csproj",
+        "packagesPath": "C:\\Users\\Shadow\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Shadow\\source\\repos\\VRC-Mods\\AvatarHider\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Shadow\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\6.0.100-preview.1.21103.13\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
